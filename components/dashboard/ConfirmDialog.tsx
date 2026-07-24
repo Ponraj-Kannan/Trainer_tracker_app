@@ -36,7 +36,7 @@ export function ConfirmDialog({
 
   return (
     <Dialog open={open} onOpenChange={(o) => !o && !isSubmitting && onCancel()}>
-      <DialogContent className="sm:max-w-sm mx-4 rounded-xl border border-border bg-white p-0 overflow-hidden">
+      <DialogContent className="sm:max-w-sm rounded-xl border border-border bg-white p-0 overflow-hidden">
 
         {/* Header — flat solid strip */}
         <div className="flat-brand px-6 py-5">
