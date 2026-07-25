@@ -8,7 +8,7 @@ export const APP_CONFIG = {
   name: "WorkTracker",
   fullName: "Employee Daily Work Tracker",
   company: "Tracker Corp",
-  adminContact: "98894058914",
+  adminContact: "9894058914",
   version: "1.0.0",
 } as const;
 
