@@ -88,7 +88,8 @@ export default async function DashboardPage() {
           {isSubmitted ? (
             /* ── Layout when ALREADY SUBMITTED ── */
             <div className="space-y-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0 animate-fade-in">
-              <div className="lg:col-span-1">
+              {/* Employee profile — hidden on mobile, visible on desktop left column */}
+              <div className="hidden lg:block lg:col-span-1">
                 <EmployeeInfoCard employee={employee} />
               </div>
               <div className="lg:col-span-2">
