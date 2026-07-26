@@ -170,8 +170,8 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1
                     touch-target
                     ${isSelected
-                      ? "work-card-selected shadow-sm"
-                      : `bg-white ${workConfig.borderClass} hover:${workConfig.bgClass}`
+                      ? `${workConfig.selectedBgClass} ${workConfig.selectedBorderClass} shadow-xs`
+                      : `bg-white ${workConfig.borderClass} ${workConfig.bgClass}`
                     }
                   `}
                   aria-pressed={isSelected}
@@ -182,8 +182,8 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
                     <div
                       className={`w-7 h-7 rounded-md flex items-center justify-center transition-colors ${
                         isSelected
-                          ? "bg-white/20 text-white"
-                          : `${workConfig.bgClass} ${workConfig.colorClass}`
+                          ? `bg-white shadow-xs ${workConfig.colorClass}`
+                          : `bg-white/80 ${workConfig.colorClass}`
                       }`}
                     >
                       <Icon className="w-4 h-4" strokeWidth={2} />
@@ -193,21 +193,21 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
                     <div
                       className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
                         isSelected
-                          ? "border-white bg-white"
-                          : "border-border"
+                          ? `border-transparent ${workConfig.dotClass}`
+                          : "border-border/80 bg-white"
                       }`}
                     >
                       {isSelected && (
-                        <div className="w-2 h-2 rounded-full bg-primary" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
                       )}
                     </div>
                   </div>
 
                   {/* Label */}
-                  <p className={`text-xs font-bold leading-tight ${isSelected ? "text-white" : "text-foreground"}`}>
+                  <p className={`text-xs font-bold leading-tight ${workConfig.colorClass}`}>
                     {workConfig.label}
                   </p>
-                  <p className={`text-[10px] mt-0.5 leading-snug ${isSelected ? "text-white/80" : "text-muted-foreground"}`}>
+                  <p className="text-[10px] mt-0.5 leading-snug text-muted-foreground font-medium">
                     {workConfig.description}
                   </p>
                 </button>

@@ -80,4 +80,7 @@ export interface WorkTypeConfig {
   colorClass: string;
   bgClass: string;
   borderClass: string;
+  selectedBgClass: string;
+  selectedBorderClass: string;
+  dotClass: string;
 }

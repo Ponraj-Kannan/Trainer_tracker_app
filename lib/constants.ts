@@ -20,7 +20,8 @@ export const ROUTES = {
 } as const;
 
 /**
- * Work type configurations — distinct colorful themes for visual visual clarity
+ * Work type configurations — distinct colorful themes for visual clarity.
+ * When selected, cards are filled with a light tint related to their border color (not red).
  */
 export const WORK_TYPES: WorkTypeConfig[] = [
   {
@@ -29,8 +30,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "OIF",
     description: "College",
     colorClass: "text-emerald-700",
-    bgClass: "bg-emerald-50/80",
-    borderClass: "border-emerald-200 hover:border-emerald-400",
+    bgClass: "bg-emerald-50/50 hover:bg-emerald-50",
+    borderClass: "border-emerald-300",
+    selectedBgClass: "bg-emerald-100/80",
+    selectedBorderClass: "border-emerald-500 ring-2 ring-emerald-500/30",
+    dotClass: "bg-emerald-600 border-emerald-600",
   },
   {
     type: "IT",
@@ -38,8 +42,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "IT",
     description: "Internal Training",
     colorClass: "text-blue-700",
-    bgClass: "bg-blue-50/80",
-    borderClass: "border-blue-200 hover:border-blue-400",
+    bgClass: "bg-blue-50/50 hover:bg-blue-50",
+    borderClass: "border-blue-300",
+    selectedBgClass: "bg-blue-100/80",
+    selectedBorderClass: "border-blue-500 ring-2 ring-blue-500/30",
+    dotClass: "bg-blue-600 border-blue-600",
   },
   {
     type: "TRAVEL",
@@ -47,8 +54,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "TRV",
     description: "Travel / On-Site",
     colorClass: "text-amber-700",
-    bgClass: "bg-amber-50/80",
-    borderClass: "border-amber-200 hover:border-amber-400",
+    bgClass: "bg-amber-50/50 hover:bg-amber-50",
+    borderClass: "border-amber-300",
+    selectedBgClass: "bg-amber-100/80",
+    selectedBorderClass: "border-amber-500 ring-2 ring-amber-500/30",
+    dotClass: "bg-amber-600 border-amber-600",
   },
   {
     type: "HALF DAY TRAVEL",
@@ -56,8 +66,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "HDT",
     description: "Half Day Travel",
     colorClass: "text-orange-700",
-    bgClass: "bg-orange-50/80",
-    borderClass: "border-orange-200 hover:border-orange-400",
+    bgClass: "bg-orange-50/50 hover:bg-orange-50",
+    borderClass: "border-orange-300",
+    selectedBgClass: "bg-orange-100/80",
+    selectedBorderClass: "border-orange-500 ring-2 ring-orange-500/30",
+    dotClass: "bg-orange-600 border-orange-600",
   },
   {
     type: "LEAVE",
@@ -65,8 +78,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "LVE",
     description: "Planned Leave",
     colorClass: "text-purple-700",
-    bgClass: "bg-purple-50/80",
-    borderClass: "border-purple-200 hover:border-purple-400",
+    bgClass: "bg-purple-50/50 hover:bg-purple-50",
+    borderClass: "border-purple-300",
+    selectedBgClass: "bg-purple-100/80",
+    selectedBorderClass: "border-purple-500 ring-2 ring-purple-500/30",
+    dotClass: "bg-purple-600 border-purple-600",
   },
   {
     type: "EMERGENCY LEAVE",
@@ -74,8 +90,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "EML",
     description: "Emergency / Urgent",
     colorClass: "text-rose-700",
-    bgClass: "bg-rose-50/80",
-    borderClass: "border-rose-200 hover:border-rose-400",
+    bgClass: "bg-rose-50/50 hover:bg-rose-50",
+    borderClass: "border-rose-300",
+    selectedBgClass: "bg-rose-100/80",
+    selectedBorderClass: "border-rose-500 ring-2 ring-rose-500/30",
+    dotClass: "bg-rose-600 border-rose-600",
   },
   {
     type: "OTHER",
@@ -83,8 +102,11 @@ export const WORK_TYPES: WorkTypeConfig[] = [
     icon: "OTH",
     description: "Other Work Type",
     colorClass: "text-teal-700",
-    bgClass: "bg-teal-50/80",
-    borderClass: "border-teal-200 hover:border-teal-400",
+    bgClass: "bg-teal-50/50 hover:bg-teal-50",
+    borderClass: "border-teal-300",
+    selectedBgClass: "bg-teal-100/80",
+    selectedBorderClass: "border-teal-500 ring-2 ring-teal-500/30",
+    dotClass: "bg-teal-600 border-teal-600",
   },
 ] as const;
 
