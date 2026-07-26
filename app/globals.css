@@ -49,62 +49,64 @@
 }
 
 /* ============================================================
-   FLAT DESIGN — Solid colors, no shadows, ample whitespace
-   Primary: #DA6C6C (rose)
+   FLAT DESIGN — Royal Crimson & Dark Charcoal Palette
+   Primary Accent: #bf4342
+   Headers & Text: #1a1d20 / #111315
+   Background: #f8f9fa
    ============================================================ */
 :root {
-  /* Flat off-white surface */
-  --background: oklch(0.972 0 0);
-  --foreground: oklch(0.14 0 0);
+  /* Crisp light background & dark charcoal foreground */
+  --background: #f8f9fa;
+  --foreground: #1a1d20;
 
-  /* Pure white cards */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.14 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.14 0 0);
+  /* Pure white cards with charcoal text */
+  --card: #ffffff;
+  --card-foreground: #111315;
+  --popover: #ffffff;
+  --popover-foreground: #111315;
 
-  /* Primary: #DA6C6C rose */
-  --primary: oklch(0.62 0.12 18);
-  --primary-foreground: oklch(1 0 0);
+  /* Primary: #bf4342 (Royal Crimson) */
+  --primary: #bf4342;
+  --primary-foreground: #ffffff;
 
-  /* Secondary: pale rose tint */
-  --secondary: oklch(0.955 0.03 18);
-  --secondary-foreground: oklch(0.42 0.08 18);
+  /* Secondary: subtle crimson tint */
+  --secondary: #fdf2f2;
+  --secondary-foreground: #8c2b2a;
 
-  /* Muted surfaces */
-  --muted: oklch(0.96 0 0);
-  --muted-foreground: oklch(0.50 0 0);
+  /* Muted surfaces & slate text */
+  --muted: #f1f3f5;
+  --muted-foreground: #5a626a;
 
-  /* Accent: light rose hover */
-  --accent: oklch(0.96 0.02 18);
-  --accent-foreground: oklch(0.42 0.08 18);
+  /* Accent: light hover tint */
+  --accent: #fdf2f2;
+  --accent-foreground: #8c2b2a;
 
   /* Destructive */
-  --destructive: oklch(0.55 0.20 27);
+  --destructive: #dc3545;
 
-  /* Flat borders — neutral grey */
-  --border: oklch(0.90 0 0);
-  --input: oklch(0.90 0 0);
-  --ring: oklch(0.62 0.12 18);
+  /* Crisp flat borders */
+  --border: #e2e6ea;
+  --input: #e2e6ea;
+  --ring: #bf4342;
 
   /* Charts */
-  --chart-1: oklch(0.62 0.12 18);
-  --chart-2: oklch(0.60 0.10 200);
-  --chart-3: oklch(0.68 0.10 145);
-  --chart-4: oklch(0.65 0.09 55);
-  --chart-5: oklch(0.55 0.08 280);
+  --chart-1: #bf4342;
+  --chart-2: #2b5c8f;
+  --chart-3: #2d8a64;
+  --chart-4: #d97706;
+  --chart-5: #6f42c1;
 
   /* Radius — soft, not sharp */
   --radius: 0.625rem;
 
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.14 0 0);
-  --sidebar-primary: oklch(0.62 0.12 18);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.96 0.02 18);
-  --sidebar-accent-foreground: oklch(0.42 0.08 18);
-  --sidebar-border: oklch(0.90 0 0);
-  --sidebar-ring: oklch(0.62 0.12 18);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1d20;
+  --sidebar-primary: #bf4342;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fdf2f2;
+  --sidebar-accent-foreground: #8c2b2a;
+  --sidebar-border: #e2e6ea;
+  --sidebar-ring: #bf4342;
 }
 
 /* ============================================================
@@ -114,14 +116,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground antialiased;
     -webkit-tap-highlight-color: transparent;
   }
+
   html {
     @apply font-sans scroll-smooth;
   }
-  button, a {
+
+  button,
+  a {
     @apply touch-manipulation;
   }
 }
@@ -133,36 +139,33 @@
 
   /* Flat solid brand panel — solid primary color */
   .flat-brand {
-    background-color: oklch(0.62 0.12 18);
+    background-color: #bf4342;
   }
 
   /* Flat brand — slightly darker */
   .flat-brand-dark {
-    background-color: oklch(0.54 0.12 18);
+    background-color: #9b3332;
   }
 
   /* Flat card — white, single border, no shadow */
   .flat-card {
-    background-color: oklch(1 0 0);
-    border: 1px solid oklch(0.90 0 0);
+    background-color: #ffffff;
+    border: 1px solid #e2e6ea;
     border-radius: 0.75rem;
   }
 
   /* Work type button — unselected state */
   .work-card {
-    @apply bg-white border border-border rounded-lg cursor-pointer
-      transition-colors duration-150
-      hover:bg-accent hover:border-primary/30
-      active:bg-secondary;
+    @apply bg-white border border-border rounded-lg cursor-pointer transition-colors duration-150 hover:bg-accent hover:border-primary/30 active:bg-secondary;
     -webkit-tap-highlight-color: transparent;
     min-height: 80px;
   }
 
   /* Work type button — selected state (flat solid fill) */
   .work-card-selected {
-    background-color: oklch(0.62 0.12 18) !important;
-    border-color: oklch(0.62 0.12 18) !important;
-    color: oklch(1 0 0);
+    background-color: #bf4342 !important;
+    border-color: #bf4342 !important;
+    color: #ffffff;
   }
 
   /* Fade in — simple, no bounce */
@@ -171,8 +174,15 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Check mark scale in */
@@ -181,8 +191,15 @@
   }
 
   @keyframes checkIn {
-    from { transform: scale(0.6); opacity: 0; }
-    to   { transform: scale(1);   opacity: 1; }
+    from {
+      transform: scale(0.6);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   /* Minimum touch target */
