@@ -41,10 +41,10 @@ export function TodayStatusCard({ submission }: TodayStatusCardProps) {
           Today&apos;s Status
         </p>
         <span
-          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+          className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${
             submission
-              ? "bg-primary/10 text-primary"
-              : "bg-muted text-muted-foreground"
+              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+              : "bg-amber-50 text-amber-700 border-amber-200"
           }`}
         >
           {submission ? "Submitted" : "Pending"}
@@ -54,22 +54,24 @@ export function TodayStatusCard({ submission }: TodayStatusCardProps) {
       <div className="px-4 py-4">
         {submission && workConfig ? (
           <div className="space-y-3">
-            {/* Work type — flat solid block */}
-            <div className="flat-brand rounded-lg px-4 py-3 flex items-center justify-between">
+            {/* Work type — colorful card block */}
+            <div className={`rounded-lg px-4 py-3 border flex items-center justify-between ${workConfig.bgClass} ${workConfig.borderClass}`}>
               <div>
-                <p className="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-0.5">
+                <p className={`text-[10px] font-semibold uppercase tracking-widest mb-0.5 ${workConfig.colorClass}`}>
                   Work Type
                 </p>
-                <p className="text-white font-bold text-sm">
-                  {workConfig.label}
+                <p className={`font-bold text-sm ${workConfig.colorClass}`}>
+                  {workConfig.label} — {workConfig.description}
                 </p>
               </div>
-              <Check className="w-5 h-5 text-white flex-shrink-0" strokeWidth={2} />
+              <div className={`w-7 h-7 rounded-md flex items-center justify-center bg-white shadow-xs ${workConfig.colorClass}`}>
+                <Check className="w-4 h-4" strokeWidth={2.5} />
+              </div>
             </div>
 
             {/* Meta row */}
             <div className="grid grid-cols-2 gap-2">
-              <div className="bg-muted rounded-lg px-3 py-2.5">
+              <div className="bg-muted/70 rounded-lg px-3 py-2.5 border border-border/50">
                 <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest mb-1">
                   Date
                 </p>
@@ -77,7 +79,7 @@ export function TodayStatusCard({ submission }: TodayStatusCardProps) {
                   {todayDisplay}
                 </p>
               </div>
-              <div className="bg-muted rounded-lg px-3 py-2.5">
+              <div className="bg-muted/70 rounded-lg px-3 py-2.5 border border-border/50">
                 <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest mb-1">
                   Time
                 </p>

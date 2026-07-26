@@ -154,7 +154,7 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
             </p>
           </div>
 
-          {/* Work type grid — 2 columns, flat cards */}
+          {/* Work type grid — 2 columns, colorful cards */}
           <div className="grid grid-cols-2 gap-2">
             {WORK_TYPES.map((workConfig) => {
               const isSelected = selectedType === workConfig.type;
@@ -166,30 +166,39 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
                   id={`work-type-${workConfig.type.toLowerCase().replace(/\s+/g, "-")}`}
                   onClick={() => setSelectedType(workConfig.type)}
                   className={`
-                    work-card rounded-lg p-3.5 text-left
+                    rounded-lg p-3 text-left border transition-all duration-150
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1
                     touch-target
-                    ${isSelected ? "work-card-selected" : ""}
+                    ${isSelected
+                      ? "work-card-selected shadow-sm"
+                      : `bg-white ${workConfig.borderClass} hover:${workConfig.bgClass}`
+                    }
                   `}
                   aria-pressed={isSelected}
                   aria-label={`Select ${workConfig.label}`}
                 >
                   {/* Icon row */}
-                  <div className="flex items-center justify-between mb-2.5">
-                    <Icon
-                      className={`w-4.5 h-4.5 ${isSelected ? "text-white" : "text-muted-foreground"}`}
-                      strokeWidth={1.5}
-                    />
+                  <div className="flex items-center justify-between mb-2">
+                    <div
+                      className={`w-7 h-7 rounded-md flex items-center justify-center transition-colors ${
+                        isSelected
+                          ? "bg-white/20 text-white"
+                          : `${workConfig.bgClass} ${workConfig.colorClass}`
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" strokeWidth={2} />
+                    </div>
+
                     {/* Radio dot */}
                     <div
-                      className={`w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center ${
+                      className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
                         isSelected
                           ? "border-white bg-white"
                           : "border-border"
                       }`}
                     >
                       {isSelected && (
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        <div className="w-2 h-2 rounded-full bg-primary" />
                       )}
                     </div>
                   </div>
@@ -198,7 +207,7 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
                   <p className={`text-xs font-bold leading-tight ${isSelected ? "text-white" : "text-foreground"}`}>
                     {workConfig.label}
                   </p>
-                  <p className={`text-[10px] mt-0.5 leading-snug ${isSelected ? "text-white/70" : "text-muted-foreground"}`}>
+                  <p className={`text-[10px] mt-0.5 leading-snug ${isSelected ? "text-white/80" : "text-muted-foreground"}`}>
                     {workConfig.description}
                   </p>
                 </button>

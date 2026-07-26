@@ -15,14 +15,18 @@ function Row({
   icon: Icon,
   label,
   value,
+  iconBg = "bg-muted text-muted-foreground",
 }: {
   icon: React.ElementType;
   label: string;
   value: React.ReactNode;
+  iconBg?: string;
 }) {
   return (
-    <div className="flex items-start gap-3 py-3.5 border-b border-border last:border-0">
-      <Icon className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+    <div className="flex items-start gap-3 py-3 border-b border-border last:border-0">
+      <div className={`w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 mt-0.5 ${iconBg}`}>
+        <Icon className="w-3.5 h-3.5" strokeWidth={1.75} />
+      </div>
       <div className="min-w-0 flex-1">
         <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest mb-0.5">
           {label}
@@ -52,10 +56,10 @@ export function EmployeeInfoCard({ employee }: EmployeeInfoCardProps) {
           Employee Profile
         </p>
         <span
-          className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+          className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full border ${
             employee.is_active
-              ? "bg-primary/10 text-primary"
-              : "bg-destructive/10 text-destructive"
+              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+              : "bg-rose-50 text-rose-700 border-rose-200"
           }`}
         >
           {employee.is_active ? "Active" : "Inactive"}
@@ -68,15 +72,17 @@ export function EmployeeInfoCard({ employee }: EmployeeInfoCardProps) {
           icon={User}
           label="Full Name"
           value={employee.full_name}
+          iconBg="bg-indigo-50 text-indigo-600"
         />
         <Row
           icon={IdCard}
           label="Employee ID"
           value={
-            <span className="font-mono text-primary font-bold">
+            <span className="font-mono text-xs text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded font-bold inline-block">
               {employee.employee_id}
             </span>
           }
+          iconBg="bg-blue-50 text-blue-600"
         />
         <Row
           icon={Mail}
@@ -89,6 +95,7 @@ export function EmployeeInfoCard({ employee }: EmployeeInfoCardProps) {
               {employee.personal_email}
             </a>
           }
+          iconBg="bg-amber-50 text-amber-600"
         />
         {employee.contact_number && (
           <Row
@@ -99,13 +106,14 @@ export function EmployeeInfoCard({ employee }: EmployeeInfoCardProps) {
                 {employee.contact_number}
               </a>
             }
+            iconBg="bg-teal-50 text-teal-600"
           />
         )}
         {employee.gender && (
-          <Row icon={User} label="Gender" value={employee.gender} />
+          <Row icon={User} label="Gender" value={employee.gender} iconBg="bg-purple-50 text-purple-600" />
         )}
         {formattedDob && (
-          <Row icon={Calendar} label="Date of Birth" value={formattedDob} />
+          <Row icon={Calendar} label="Date of Birth" value={formattedDob} iconBg="bg-rose-50 text-rose-600" />
         )}
       </div>
     </div>
