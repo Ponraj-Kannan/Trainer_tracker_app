@@ -42,11 +42,8 @@ export function LoginCard({ errorMessage }: LoginCardProps) {
       {/* ── Brand Panel — flat solid color ──────────────── */}
       <div className="flat-brand lg:w-5/12 xl:w-2/5 flex flex-col justify-between px-8 py-12 lg:py-16 lg:px-14">
 
-        {/* Logo mark */}
+        {/* Brand header */}
         <div>
-          <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-8">
-            <div className="w-5 h-5 bg-white rounded-sm" />
-          </div>
           <p className="text-white/50 text-xs font-medium tracking-widest uppercase mb-1">
             {APP_CONFIG.company}
           </p>

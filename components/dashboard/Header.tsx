@@ -34,23 +34,18 @@ export function Header({ employee }: HeaderProps) {
       <div className="max-w-2xl mx-auto px-4 sm:px-6">
         <div className="h-14 flex items-center justify-between gap-4">
 
-          {/* ── Left: brand + employee ──────────────────────── */}
+          {/* ── Left: employee name + ID ──────────────────────── */}
           <div className="flex items-center gap-3 min-w-0">
-            {/* Flat logo mark */}
-            <div className="flex-shrink-0 w-7 h-7 flat-brand rounded-md flex items-center justify-center">
-              <div className="w-3 h-3 bg-white rounded-sm" />
-            </div>
-
-            {/* Name + ID — desktop shows more, mobile just shows name */}
+            {/* Name + ID */}
             <div className="min-w-0">
               <p className="text-xs text-muted-foreground leading-none mb-0.5 hidden sm:block">
                 Welcome
               </p>
-              <div className="flex items-center gap-2 min-w-0">
+              <div className="flex items-center gap-1.5 min-w-0">
                 <span className="text-sm font-semibold text-foreground truncate">
                   {firstName}
                 </span>
-                <span className="text-xs text-muted-foreground font-mono bg-muted px-1.5 py-0.5 rounded hidden sm:inline-block">
+                <span className="text-[11px] text-muted-foreground font-mono bg-muted border border-border/60 px-1.5 py-0.5 rounded font-medium flex-shrink-0">
                   {employee.employee_id}
                 </span>
               </div>
