@@ -38,12 +38,12 @@ export function ConfirmDialog({
     <Dialog open={open} onOpenChange={(o) => !o && !isSubmitting && onCancel()}>
       <DialogContent className="sm:max-w-sm rounded-xl border border-border bg-white p-0 overflow-hidden">
 
-        {/* Header — flat solid strip */}
-        <div className="flat-brand px-6 py-5">
+        {/* Header — green solid strip */}
+        <div className="bg-emerald-700 px-6 py-5">
           <DialogTitle className="text-white text-base font-bold">
             Confirm Submission
           </DialogTitle>
-          <DialogDescription className="text-white/65 text-xs mt-1">
+          <DialogDescription className="text-emerald-100/80 text-xs mt-1">
             This cannot be changed after confirmation.
           </DialogDescription>
         </div>
@@ -52,12 +52,12 @@ export function ConfirmDialog({
         <div className="px-6 py-5 space-y-4">
           {/* Work type display */}
           {config && (
-            <div className="border border-border rounded-lg px-4 py-3.5">
-              <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-widest mb-1">
+            <div className={`border rounded-lg px-4 py-3.5 ${config.selectedBgClass} ${config.selectedBorderClass}`}>
+              <p className={`text-[10px] font-semibold uppercase tracking-widest mb-1 ${config.colorClass}`}>
                 Selected Work
               </p>
-              <p className="text-foreground font-bold text-sm">{config.label}</p>
-              <p className="text-muted-foreground text-xs mt-0.5">{config.description}</p>
+              <p className={`font-bold text-sm ${config.colorClass}`}>{config.label}</p>
+              <p className="text-muted-foreground text-xs mt-0.5 font-medium">{config.description}</p>
             </div>
           )}
 
@@ -83,7 +83,7 @@ export function ConfirmDialog({
             id="confirm-submission-btn"
             onClick={onConfirm}
             disabled={isSubmitting}
-            className="flex-1 h-10 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm gap-2"
+            className="flex-1 h-10 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm gap-2"
           >
             {isSubmitting ? (
               <>

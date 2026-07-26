@@ -23,8 +23,8 @@ export function SuccessState({ submission }: SuccessStateProps) {
   return (
     <div className="flex flex-col items-center py-6 gap-5 animate-fade-in">
 
-      {/* Flat check mark — solid rose square icon */}
-      <div className="w-14 h-14 flat-brand rounded-xl flex items-center justify-center animate-check-in">
+      {/* Green check mark — success icon */}
+      <div className="w-14 h-14 bg-emerald-600 text-white rounded-xl flex items-center justify-center animate-check-in shadow-xs">
         <Check className="w-7 h-7 text-white" strokeWidth={2.5} />
       </div>
 
@@ -38,14 +38,14 @@ export function SuccessState({ submission }: SuccessStateProps) {
         </p>
       </div>
 
-      {/* Work type — flat solid block */}
+      {/* Work type — category matching color block */}
       {config && (
-        <div className="w-full max-w-xs flat-brand rounded-xl px-5 py-4">
-          <p className="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-1">
+        <div className={`w-full max-w-xs rounded-xl px-5 py-4 border ${config.selectedBgClass} ${config.selectedBorderClass}`}>
+          <p className={`text-[10px] font-semibold uppercase tracking-widest mb-1 ${config.colorClass}`}>
             Today&apos;s Work
           </p>
-          <p className="text-white font-bold text-base">{config.label}</p>
-          <p className="text-white/60 text-xs mt-0.5">{config.description}</p>
+          <p className={`font-bold text-base ${config.colorClass}`}>{config.label}</p>
+          <p className="text-xs text-muted-foreground font-medium mt-0.5">{config.description}</p>
         </div>
       )}
 

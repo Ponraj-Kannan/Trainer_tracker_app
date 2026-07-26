@@ -64,8 +64,8 @@ export function TodayStatusCard({ submission }: TodayStatusCardProps) {
                   {workConfig.label} — {workConfig.description}
                 </p>
               </div>
-              <div className={`w-7 h-7 rounded-md flex items-center justify-center bg-white shadow-xs ${workConfig.colorClass}`}>
-                <Check className="w-4 h-4" strokeWidth={2.5} />
+              <div className="w-7 h-7 rounded-md flex items-center justify-center bg-emerald-100 border border-emerald-300 text-emerald-700 shadow-xs">
+                <Check className="w-4 h-4 text-emerald-700" strokeWidth={2.5} />
               </div>
             </div>
 
