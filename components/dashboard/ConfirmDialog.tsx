@@ -38,12 +38,12 @@ export function ConfirmDialog({
     <Dialog open={open} onOpenChange={(o) => !o && !isSubmitting && onCancel()}>
       <DialogContent className="sm:max-w-sm rounded-xl border border-border bg-white p-0 overflow-hidden">
 
-        {/* Header — green solid strip */}
-        <div className="bg-emerald-700 px-6 py-5">
+        {/* Header — red solid strip */}
+        <div className="bg-red-600 px-6 py-5">
           <DialogTitle className="text-white text-base font-bold">
             Confirm Submission
           </DialogTitle>
-          <DialogDescription className="text-emerald-100/80 text-xs mt-1">
+          <DialogDescription className="text-red-100/80 text-xs mt-1">
             This cannot be changed after confirmation.
           </DialogDescription>
         </div>
@@ -83,7 +83,7 @@ export function ConfirmDialog({
             id="confirm-submission-btn"
             onClick={onConfirm}
             disabled={isSubmitting}
-            className="flex-1 h-10 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm gap-2"
+            className="flex-1 h-10 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm gap-2"
           >
             {isSubmitting ? (
               <>
