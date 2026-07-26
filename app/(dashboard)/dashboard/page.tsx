@@ -60,56 +60,65 @@ export default async function DashboardPage() {
 
   const firstName = employee.full_name.split(" ")[0];
 
+  const isSubmitted = todaySubmission !== null;
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header employee={employee} />
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
 
-        {/* Page heading — desktop only */}
-        <div className="hidden lg:block mb-6 animate-fade-in">
-          <h2 className="text-xl font-bold text-foreground">
-            Daily Work Dashboard
-          </h2>
-          <p className="text-sm text-muted-foreground mt-1">
-            Track and submit your work status for today
+        {/* Personalized Greeting Card — Desktop & Mobile */}
+        <div className="bg-white border border-border rounded-xl px-4 py-4 sm:px-6 sm:py-5 mb-4 sm:mb-6 animate-fade-in">
+          <p className="text-[10px] sm:text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-0.5">
+            Welcome Back
+          </p>
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight">
+            Good day, {firstName}
+          </h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
+            {isSubmitted
+              ? "Your work status for today has been recorded."
+              : "Select your work status and submit your daily update."}
           </p>
         </div>
 
         <Suspense fallback={<DashboardSkeleton />}>
 
-          {/* ── Mobile layout: Greeting Card → Today's Status → Work Submission ── */}
-          <div className="space-y-3 lg:hidden animate-fade-in">
-            {/* Claude-style Mobile Greeting Card (No Employee ID) */}
-            <div className="bg-white border border-border rounded-xl px-4 py-4">
-              <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-0.5">
-                Welcome Back
-              </p>
-              <h1 className="text-xl font-bold text-foreground tracking-tight">
-                Good day, {firstName}
-              </h1>
-              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                Select your work status and submit your daily update.
-              </p>
+          {isSubmitted ? (
+            /* ── Layout when ALREADY SUBMITTED ── */
+            <div className="space-y-4 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0 animate-fade-in">
+              <div className="lg:col-span-1">
+                <EmployeeInfoCard employee={employee} />
+              </div>
+              <div className="lg:col-span-2">
+                <TodayStatusCard submission={todaySubmission} />
+              </div>
             </div>
+          ) : (
+            /* ── Layout when PENDING SUBMISSION ── */
+            <>
+              {/* Mobile layout */}
+              <div className="space-y-3 lg:hidden animate-fade-in">
+                <TodayStatusCard submission={todaySubmission} />
+                <WorkTypeSelector employee={employee} initialSubmission={todaySubmission} />
+              </div>
 
-            <TodayStatusCard submission={todaySubmission} />
-            <WorkTypeSelector employee={employee} initialSubmission={todaySubmission} />
-          </div>
+              {/* Desktop layout */}
+              <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6 animate-fade-in">
+                {/* Left column: Profile + Status */}
+                <div className="lg:col-span-1 space-y-5">
+                  <EmployeeInfoCard employee={employee} />
+                  <TodayStatusCard submission={todaySubmission} />
+                </div>
 
-          {/* ── Desktop layout: 3-column grid ───────────────────── */}
-          <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
-            {/* Left column: Profile + Status */}
-            <div className="lg:col-span-1 space-y-5">
-              <EmployeeInfoCard employee={employee} />
-              <TodayStatusCard submission={todaySubmission} />
-            </div>
-
-            {/* Right column: Work Submission */}
-            <div className="lg:col-span-2">
-              <WorkTypeSelector employee={employee} initialSubmission={todaySubmission} />
-            </div>
-          </div>
+                {/* Right column: Work Submission Form */}
+                <div className="lg:col-span-2">
+                  <WorkTypeSelector employee={employee} initialSubmission={todaySubmission} />
+                </div>
+              </div>
+            </>
+          )}
 
         </Suspense>
       </main>

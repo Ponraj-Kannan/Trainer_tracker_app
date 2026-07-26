@@ -92,40 +92,7 @@ export function WorkTypeSelector({ employee, initialSubmission }: WorkTypeSelect
 
   /* ── Already submitted ─────────────────────────────────── */
   if (isAlreadySubmitted && submission) {
-    return (
-      <div className="bg-white border border-border rounded-xl animate-fade-in">
-        {/* Header */}
-        <div className="flex items-center justify-between px-4 pt-4 pb-3 border-b border-border">
-          <p className="text-xs font-semibold text-foreground uppercase tracking-widest">
-            Daily Work Submission
-          </p>
-        </div>
-
-        <div className="px-4 py-4">
-          {/* Locked notice */}
-          <div className="flex items-start gap-3 border border-border rounded-lg px-4 py-3.5 mb-4">
-            <Lock className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" strokeWidth={1.5} />
-            <div>
-              <p className="text-sm font-semibold text-foreground">
-                Submission locked for today.
-              </p>
-              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                If your status has changed, contact the administrator at{" "}
-                <a
-                  href={`tel:${APP_CONFIG.adminContact}`}
-                  className="text-primary font-semibold hover:underline"
-                >
-                  {APP_CONFIG.adminContact}
-                </a>
-                .
-              </p>
-            </div>
-          </div>
-
-          <SuccessState submission={submission} />
-        </div>
-      </div>
-    );
+    return null;
   }
 
   /* ── Work type selector ────────────────────────────────── */

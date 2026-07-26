@@ -22,8 +22,6 @@ export function Header({ employee }: HeaderProps) {
   const clock = useLiveClock();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const firstName = employee.full_name.split(" ")[0];
-
   async function handleLogout() {
     setIsLoggingOut(true);
     await signOut();
@@ -31,28 +29,15 @@ export function Header({ employee }: HeaderProps) {
 
   return (
     <header className="w-full bg-white border-b border-border sticky top-0 z-40">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-14 flex items-center justify-between gap-4">
 
-          {/* ── Left: employee name + ID (Desktop) / Brand (Mobile) ── */}
+          {/* ── Left: Brand ── */}
           <div className="flex items-center gap-3 min-w-0">
             <div className="min-w-0">
-              <p className="text-xs text-muted-foreground leading-none mb-0.5 hidden lg:block">
-                Welcome
-              </p>
-              <div className="flex items-center gap-1.5 min-w-0">
-                {/* Mobile view brand header */}
-                <span className="text-sm font-bold text-foreground truncate lg:hidden">
-                  WorkTracker
-                </span>
-                {/* Desktop view name + employee ID */}
-                <span className="text-sm font-semibold text-foreground truncate hidden lg:inline">
-                  {firstName}
-                </span>
-                <span className="text-[11px] text-muted-foreground font-mono bg-muted border border-border/60 px-1.5 py-0.5 rounded font-medium flex-shrink-0 hidden lg:inline-block">
-                  {employee.employee_id}
-                </span>
-              </div>
+              <span className="text-base font-bold text-foreground tracking-tight truncate">
+                WorkTracker
+              </span>
             </div>
           </div>
 
@@ -76,19 +61,19 @@ export function Header({ employee }: HeaderProps) {
           </div>
 
           {/* ── Right: actions ──────────────────────────────── */}
-          <div className="flex items-center gap-1 flex-shrink-0">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
 
-            {/* Profile icon — mobile only */}
+            {/* Profile icon — mobile & desktop */}
             <Link
               href="/profile"
               id="profile-icon-btn"
               aria-label="View your profile"
               className="
-                lg:hidden
                 w-8 h-8 flex items-center justify-center rounded-md
                 text-muted-foreground hover:text-foreground hover:bg-muted
                 transition-colors duration-150
               "
+              title="View Profile"
             >
               <UserCircle className="w-5 h-5" strokeWidth={1.5} />
             </Link>
