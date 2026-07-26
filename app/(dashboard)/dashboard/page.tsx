@@ -58,6 +58,8 @@ export default async function DashboardPage() {
 
   const todaySubmission = await getTodaySubmission(employee.id);
 
+  const firstName = employee.full_name.split(" ")[0];
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header employee={employee} />
@@ -76,9 +78,21 @@ export default async function DashboardPage() {
 
         <Suspense fallback={<DashboardSkeleton />}>
 
-          {/* ── Mobile layout: Today's Status → Work Submission ── */}
-          {/* Employee profile is hidden — accessible via profile icon */}
+          {/* ── Mobile layout: Greeting Card → Today's Status → Work Submission ── */}
           <div className="space-y-3 lg:hidden animate-fade-in">
+            {/* Claude-style Mobile Greeting Card (No Employee ID) */}
+            <div className="bg-white border border-border rounded-xl px-4 py-4">
+              <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-0.5">
+                Welcome Back
+              </p>
+              <h1 className="text-xl font-bold text-foreground tracking-tight">
+                Good day, {firstName}
+              </h1>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                Select your work status and submit your daily update.
+              </p>
+            </div>
+
             <TodayStatusCard submission={todaySubmission} />
             <WorkTypeSelector employee={employee} initialSubmission={todaySubmission} />
           </div>
